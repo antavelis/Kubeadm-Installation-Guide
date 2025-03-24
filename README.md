@@ -118,3 +118,8 @@ Verify if it is working as expected!
 ```bash
 kubectl get nodes
 ```
+
+Run in master node to label the worker node
+```bash
+kubectl label node <NODE_NAME> node-role.kubernetes.io/worker=
+```
