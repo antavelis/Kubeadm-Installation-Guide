@@ -102,6 +102,7 @@ b) Generate a token for worker nodes to join:
 ```
 
 c) Expose port 6443 in the Security group for the Worker to connect to Master Node
+d) Make sure security group allows all traffic from private subnet, for all functionalities to work, e.g port-forward, flannel etc
 
 ### Worker Node (Only):
 
