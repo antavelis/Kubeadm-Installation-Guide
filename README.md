@@ -91,7 +91,7 @@ a) Initialize the Kubernetes master node.
  sudo chown "$(id -u)":"$(id -g)" "$HOME"/.kube/config
 
  # Network Plugin = calico
- kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.0/manifests/calico.yaml
+ kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.29.2/manifests/calico.yaml
 ```
 After succesfully running, your Kubernetes control plane will be initialized successfully.
 
