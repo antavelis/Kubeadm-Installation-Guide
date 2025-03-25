@@ -124,3 +124,32 @@ Run in master node to label the worker node
 ```bash
 kubectl label node <NODE_NAME> node-role.kubernetes.io/worker=
 ```
+
+### Create user and generate kubeconfig for remote access
+Create a new file and add this config inside:
+```bash
+sudo vi /etc/kubernetes/kubeadm-config.yaml
+```
+
+This will make both public and private ips are added to the generated certs that are used inside the kubeconfig:
+```yaml
+apiVersion: kubeadm.k8s.io/v1beta3
+kind: ClusterConfiguration
+apiServer:
+  certSANs:
+    - localhost
+    - 127.0.0.1
+    - <private_ip>
+    - <public_ip>
+```
+Regenarate the certs.
+```bash
+sudo kubeadm init phase certs apiserver --config=/etc/kubernetes/kubeadm-config.yaml
+sudo systemctl restart kubelet
+```
+Generate a kubeconfig for a user and make this user admin.
+```bash
+sudo kubeadm kubeconfig user --client-name davel > my_kubeconfig
+kubectl create clusterrolebinding my-admin-binding   --clusterrole=cluster-admin   --user=davel
+```
+You may download my_kubeconfig and use it from your pc, make sure you can access port 6443 on the master node.
