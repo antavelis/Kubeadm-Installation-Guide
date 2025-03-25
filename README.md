@@ -150,6 +150,6 @@ sudo systemctl restart kubelet
 Generate a kubeconfig for a user and make this user admin.
 ```bash
 sudo kubeadm kubeconfig user --client-name davel > my_kubeconfig
-kubectl create clusterrolebinding my-admin-binding   --clusterrole=cluster-admin   --user=davel
+kubectl create clusterrolebinding my-admin-binding --clusterrole=cluster-admin --user=davel
 ```
 You may download my_kubeconfig and use it from your pc, make sure you can access port 6443 on the master node.
